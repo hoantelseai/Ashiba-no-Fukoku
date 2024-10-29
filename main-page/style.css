@@ -1,0 +1,782 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+    5. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+    8. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* BODY */
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "Inter", system-ui;
+}
+
+/* HEADER */
+.navibar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.small-title {
+  font-size: 1vw;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: fit-content;
+}
+.logo-block {
+  margin-left: 20px;
+  width: fit-content;
+}
+
+.logo-block img {
+  width: 90%;
+}
+.contact-address {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 20px;
+  margin-right: 40px;
+}
+
+.small-nav {
+  display: flex;
+}
+
+.time-block {
+  font-size: 0.8vw;
+  background-color: #878787;
+  color: white;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+.phone-number {
+  font-size: 2vw;
+  color: #606060;
+}
+
+.menu nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding-left: 0;
+  gap: 2.5vw;
+}
+
+.menu nav ul li a {
+  text-decoration: none;
+  color: #4c4c4c;
+  font-size: 1vw;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  bottom: -4px; /* Adjust this value to set the gap between the underline and the text */
+  background-color: rgb(10, 87, 47);
+  border-radius: 5px;
+  transform-origin: right;
+  transform: scale(0);
+  transition: transform 0.9s;
+}
+
+.menu a:hover::after {
+  transform-origin: left;
+  transform: scale(1);
+}
+
+.menu a:hover {
+  color: rgb(10, 87, 47);
+  transition: transform 0.9s;
+  font-weight: 400;
+}
+
+.menu nav ul li {
+  margin-right: 1vw;
+  position: relative;
+}
+
+.menu nav ul li:not(:last-child)::after {
+  content: "|"; /* Dấu gạch thẳng đứng */
+  position: absolute;
+  right: -2vw; /* Đặt dấu gạch vào bên phải */
+  top: 50%; /* Căn giữa theo chiều dọc */
+  transform: translateY(-50%); /* Căn giữa chính xác */
+  color: #000000; /* Màu của dấu gạch */
+  font-size: 15px; /* Kích thước của dấu gạch */
+}
+
+.small-nav li {
+  position: relative;
+  display: inline-block; /* Ensures items are side by side */
+
+}
+
+.small-nav .color-block1,
+.small-nav .color-block2 {
+  appearance: none;
+  border-width: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  letter-spacing: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1), background-color 100ms cubic-bezier(.694, 0, 0.335, 1), color 100ms cubic-bezier(.694, 0, 0.335, 1);
+  user-select: none;
+  white-space: nowrap;
+  height: 100%;
+  padding: 50px 20px;
+}
+
+.small-nav .color-block2{
+  background: #8fc31f;
+}
+.small-nav .color-block1{
+  background: #00a749;
+}
+
+.small-nav .color-block1:before,
+.small-nav .color-block2:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(30deg, #2c3b0b, #00a749);
+  clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+  transition: clip-path .8s cubic-bezier(.165, 0.84, 0.44, 1);
+}
+
+.small-nav .color-block1:hover:before,
+.small-nav .color-block2:hover:before {
+  clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+}
+
+
+.small-nav a {
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1vw;
+}
+
+/* COMPANY INFO BLOCK */
+.company-info {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.company-info p {
+  line-height: 2.5vw;
+  font-size: 1.2vw;
+  padding-bottom: 40px;
+}
+
+.company-info img {
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* TOP IMGAGE BLOCK */
+
+.hero-block {
+  position: relative;
+  height: auto;
+  display: block;
+  width: 100%;
+  z-index: 1;
+}
+
+.svg-background {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-title {
+  position: absolute;
+  top: 33vw;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Đảm bảo rằng các sự kiện chuột không bị ảnh hưởng */
+}
+
+.hero-title-design {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  border-left: solid 0.1vw white;
+  border-right: solid 0.1vw white;
+  padding: 0 10px;
+}
+
+.hero-title-design h1 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 2.5vw;
+  font-weight: 400;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  line-height: 5.9rem;
+}
+
+/* SPLIT TEXT ANIMATION */
+.char {
+  transform: translateY(115px);
+  transition: transform .5s;
+}
+
+.small-title-design {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5.5vw;
+  margin-top: 20px;
+  position: relative;
+}
+
+.small-title-design h4,
+.small-title-design h2 {
+  font-weight: 200;
+}
+
+.small-title-design h2 {
+  font-size: 2.5vw;
+}
+.small-title-design h4 {
+  text-align: left;
+  font-size: 1vw;
+}
+
+.small-title-design::before {
+  content: "";
+  width: 0.1vw;
+  background-color: white;
+  height: 2.5vw;
+  position: absolute;
+  left: 40%;
+  top: 20%;
+}
+
+/* BUSINESS BLOCK */
+.block-details {
+  display: block;
+}
+
+.business-block {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #a5e296;
+}
+
+.business-block img {
+  max-width: 60%;
+  height: auto;
+  display: block;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+}
+
+.business-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+  clip-path: polygon(20% 0, 100% 5%, 100% 100%, 0% 100%);
+}
+
+.business-content h3 {
+  font-size: 1.5vw;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.business-content p {
+  text-align: justify;
+  margin: 1vw 6vw;
+  font-size: 1vw;
+}
+
+/* BUTTON */
+.button-design {
+  position: relative;
+  z-index: 1; /* Đảm bảo hiệu ứng nền button hiển thị lên trên */
+}
+
+.button-design button {
+  background: none;
+  justify-content: center;
+  align-items: center;
+  min-width: 220px; /* Điều chỉnh chiều rộng tối thiểu */
+  min-height: 56px;
+  font-size: 1.2em;
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 400;
+  position: relative;
+  border: 2px solid rgb(8, 81, 57); /* Sử dụng biến màu chính */
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.button-design button a {
+  text-decoration: none;
+  color: inherit; /* Kế thừa màu chữ từ button */
+  background: transparent; /* Bỏ nền trắng */
+  padding: 0px 70px;
+  z-index: 1;
+  position: relative;
+  display: inline-flex;
+  align-items: center; /* Đảm bảo icon và text được căn giữa */
+  font-size: 1.2vw;
+}
+
+button i {
+  font-size: 1.5em;
+  margin-left: 10px;
+  transition: all 0.5s linear;
+  color: #dfeced; /* Sử dụng màu chính */
+}
+
+.button-design button:hover i {
+  transform: translateX(30px); /* Hiệu ứng đẩy icon qua phải */
+  color: #0fa156;
+}
+
+.button-design button::before,
+.button-design button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -100%;
+  left: 0;
+  background-color: rgb(8, 81, 57); /* Hiệu ứng nền màu chính */
+  z-index: -1;
+  transition: all 400ms ease-in;
+}
+
+.button-design button:hover {
+  color: #fff; /* Màu chữ trắng khi hover */
+}
+
+.button-design button::before {
+  opacity: 0.3;
+}
+
+.button-design button::after {
+  transition-delay: 0.3s;
+}
+
+.button-design button:hover::before,
+.button-design button:hover::after {
+  top: 0; /* Hiệu ứng nền hiện lên */
+}
+
+/* REQUEST PROCESS BLOCK */
+
+.request-process-block {
+  display: flex;
+  align-items: center;
+  background-color: #a5e296;
+  position: relative;
+}
+
+.request-process-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.request-process-block img {
+  max-width: 60%;
+  height: auto;
+  display: block;
+  clip-path: polygon(10% 0, 100% 5%, 100% 100%, 20% 100%);
+  z-index: 0;
+}
+
+.request-process-content h3 {
+  font-size: 1.5vw;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.request-process-content p {
+  text-align: justify;
+  margin: 1vw 6vw;
+  font-size: 1vw;
+}
+
+/* RECRUITMENT INFO BLOCK */
+/* IMAGE */
+.image-background {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.image-background img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: block;
+  filter: opacity(0.5);
+
+  clip-path: polygon(
+    0% 0%, /* Góc trên bên trái */ 
+    0% 90%,/* Góc dưới bên trái */ 
+    50% 100%,/* Điểm giữa đường chéo lên phía bên phải */ 
+    100% 90%,/* Góc dưới bên phải */ 
+    100% 0% /* Góc trên bên phải */
+  );
+}
+
+.image-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #7de295;
+  mix-blend-mode: multiply; /* Kết hợp màu xanh với ảnh */
+  z-index: 2;
+  clip-path: polygon(
+    0% 0%, /* Góc trên bên trái */ 
+    0% 90%,/* Góc dưới bên trái */ 
+    50% 100%,/* Điểm giữa đường chéo lên phía bên phải */ 
+    100% 90%,/* Góc dưới bên phải */ 
+    100% 0% /* Góc trên bên phải */
+  );
+}
+
+/* RECRUITMENT CONTENT */
+
+.recruitment-info-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.recruitment-info-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 100;
+}
+
+.recruitment-info-content h3 {
+  font-size: 1.5vw;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.recruitment-info-content p {
+  text-align: justify;
+  margin: 1vw 6vw;
+  font-size: 1vw;
+}
+
+/* CONSTRUCTION TRACK */
+.title-content {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.title-design {
+  margin-right: 30px;
+}
+.title-content a {
+  position: relative;
+  display: inline-block;
+  padding: 5px 0;
+  background-image: linear-gradient(
+    to right,
+    #0aa82f,
+    #0aa82f 50%,
+    #000 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  text-decoration: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #000;
+  transition: all 0.3s ease-in-out;
+}
+
+.title-content a:before {
+  content: '';
+  background: #0aa82f;
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.title-content a:hover {
+  background-position: 0;
+}
+
+.title-content a:hover:before {
+  width: 100%;
+}
+
+.construction-block {
+  display: flex;
+  justify-content: center;
+  max-width: 70%;
+  margin: 0 auto;
+  gap: 30px;
+  padding: 30px 0;
+}
+
+.small-construction p {
+  text-align: left;
+  margin-top: 20px;
+  font-size: 1.3vw;
+}
+
+.small-construction img{
+  transition: 1s ease;
+}
+.small-construction img:hover{
+-webkit-transform: scale(1.2);
+-ms-transform: scale(1.2);
+transform: scale(1.2);
+transition: 1s ease;
+}
+
+/* NEWS BLOCK */
+.news-block {
+  display: block;
+  text-align: left;
+  max-width: fit-content;
+  margin-left: 25vw;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.news-block h3 {
+  text-align: left;
+  font-size: 1.5vw;
+}
+.news-details {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+  position: relative;
+  text-align: left;
+}
+
+.news-details p {
+  font-size: 1.2vw;
+}
+
+.news-details p:first-child {
+  position: relative; /* Để pseudo-element nằm chính xác */
+  padding-bottom: 20px; /* Khoảng cách giữa văn bản và border */
+}
+
+.news-details p:first-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 900%;
+  border-bottom: 1px solid #000;
+  z-index: 1;
+}
+
+.border-line p {
+  position: relative;
+  padding-top: 20px;
+}
+
+.border-line p::after {
+  top: 0;
+  border-top: 1px solid #000;
+}
+
+/* CALENDAR BLOCK */
+.calendar-block {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  background: #0fa156;
+  clip-path: polygon(0 0, 100% 15%, 100% 100%, 0% 100%);
+  margin-top: 50px;
+}
+
+.left-calendar-block,
+.right-calendar-block {
+  display: flex;
+  flex-direction: column; /* Stack text and image vertically */
+  align-items: center; /* Center text and image horizontally */
+  justify-content: center; /* Center text and image vertically */
+  flex: 1;
+  height: 30vw;
+  font-size: 1.5vw;
+  position: relative; /* Ensure positioning for pseudo-elements */
+  z-index: 1; /* Ensure blocks are above the diagonal line */
+}
+
+.left-calendar-block {
+  background: #a5e296;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+}
+
+.small-left-calendar-block {
+  text-align: left;
+  width: 50%;
+}
+
+.right-calendar-block {
+  background: #0fa156;
+}
+
+.small-right-calendar-block {
+  text-align: left;
+  width: 50%;
+}
+
+.left-calendar-block img,
+.right-calendar-block img {
+  margin: 0 auto;
+}
+
+.left-calendar-block p,
+.right-calendar-block p {
+  padding-bottom: 20px;
+}
+
+.right-calendar-block p {
+  color: #ffffff;
+}
+
+
+/* SLIPT-WORD */
+.word {
+  position: relative;
+}
+.line-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ffff;
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+.split-word {
+  color: transparent; /* Chữ trong suốt để không hiển thị */
+}
+.split-word.visible {
+  color: black; /* Đổi màu chữ khi cần hiển thị */
+}
